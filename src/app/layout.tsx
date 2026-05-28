@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from '@/components/ui/Header';
 import ChatbotButton from '@/components/ui/ChatbotButton';
+import DynamicBackground from '@/components/ui/DynamicBackground';
 import Script from 'next/script';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,13 +22,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.className} bg-amber-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors`}>
+      <body className={`${inter.className} bg-amber-50 dark:bg-[#050505] text-gray-900 dark:text-white transition-colors`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
           enableSystem={false}
           disableTransitionOnChange
         >
+          <DynamicBackground />
           <Header />
           {children}
           <ChatbotButton />

@@ -21,9 +21,9 @@ export default function Header() {
 
   const navItems = [
     { name: 'HOME', href: '/' },
-    { name: 'ABOUT', href: '/about' },
-    { name: 'PROJECTS', href: '/projects' },
-    { name: 'CONTACT', href: '/contact' },
+    { name: 'PROJECTS', href: '#projects' },
+    { name: 'SKILLS', href: '#skills' },
+    { name: 'CONTACT', href: '#contact' },
   ];
 
   return (
@@ -40,13 +40,13 @@ export default function Header() {
           <Link href="/" className="flex items-center space-x-2">
             <div className="relative w-10 h-10">
               <Image
-                src="/logo.png"
+                src="/profile.jpg"
                 alt="Logo"
                 fill
-                className="object-contain"
+                className="object-cover rounded-full"
               />
             </div>
-            <span className="text-xl font-bold">RAM MAHESHWARI</span>
+            <span className="text-xl font-bold uppercase tracking-wider">PRIYANSHU</span>
           </Link>
 
           {/* Desktop Navigation */}

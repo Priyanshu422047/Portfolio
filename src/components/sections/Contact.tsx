@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiPhone } from 'react-icons/fi';
 import { useState } from 'react';
 
 export default function Contact() {
@@ -75,7 +75,7 @@ export default function Contact() {
             
             <div className="flex justify-center md:justify-start gap-8">
               <motion.a
-                href="https://github.com/bakasingh"
+                href="https://github.com/Priyanshu422047"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
@@ -102,6 +102,9 @@ export default function Contact() {
               >
                 <FiMail size={40} />
               </motion.a>
+              <div className="flex items-center text-gray-600 dark:text-gray-400 font-semibold text-lg ml-4">
+                +91-8837819138
+              </div>
             </div>
           </motion.div>
 

@@ -11,20 +11,40 @@ export default function ChatbotButton() {
   ]);
   const [input, setInput] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim()) return;
+    if (!input.trim() || isLoading) return;
 
-    // Add user message
-    setMessages(prev => [...prev, { text: input, isBot: false }]);
-    
-    // Simulate bot response
-    setTimeout(() => {
-      let response = "I'm a simple bot for now. I can only acknowledge your messages, but soon I'll be able to help you with more information about Priyanshu's work and experience!";
-      setMessages(prev => [...prev, { text: response, isBot: true }]);
-    }, 1000);
-
+    const userMessage = input;
     setInput('');
+    setMessages(prev => [...prev, { text: userMessage, isBot: false }]);
+    setIsLoading(true);
+
+    try {
+      const apiMessages = messages.map(m => ({
+        role: m.isBot ? "assistant" : "user",
+        content: m.text
+      }));
+      apiMessages.push({ role: "user", content: userMessage });
+
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: apiMessages })
+      });
+
+      if (!res.ok) throw new Error('Failed to fetch');
+
+      const data = await res.json();
+      setMessages(prev => [...prev, { text: data.message, isBot: true }]);
+    } catch (error) {
+      console.error(error);
+      setMessages(prev => [...prev, { text: "Sorry, I'm having trouble connecting right now.", isBot: true }]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
