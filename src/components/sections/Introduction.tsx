@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { FiDownload } from 'react-icons/fi';
 
 export default function Introduction() {

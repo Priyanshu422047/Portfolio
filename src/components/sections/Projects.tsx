@@ -5,7 +5,15 @@ import { FiGithub, FiCalendar } from 'react-icons/fi';
 
 import { useState } from 'react';
 
-function ProjectCard({ project, index }: { project: any, index: number }) {
+interface Project {
+  title: string;
+  description: string;
+  github: string;
+  date: string;
+  tags: string[];
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable no-var, @typescript-eslint/no-explicit-any */
 import mongoose from 'mongoose';
 
 declare global {
@@ -34,7 +35,7 @@ async function connectDB() {
   try {
     cached.conn = await cached.promise;
     console.log('✅ MongoDB connected');
-  } catch (e) {
+  } catch {
     cached.promise = null;
     console.warn('❌ MongoDB connection failed');
     return null;
